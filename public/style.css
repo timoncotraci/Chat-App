@@ -1,0 +1,63 @@
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#9aa7b2; --accent:#60a5fa;
+  --surface:#0e2433; --white:#e6eef6;
+  --radius:12px;
+  --glass: rgba(255,255,255,0.03);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; background:linear-gradient(180deg,#071024 0%, #071a29 100%); color:var(--white)}
+.app{display:flex; gap:20px; padding:20px; max-width:1100px; margin:24px auto; align-items:stretch}
+
+/* Sidebar */
+.sidebar{
+  width:260px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:18px; border-radius:var(--radius); box-shadow:0 8px 30px rgba(2,6,23,0.6);
+}
+.brand{font-weight:800; font-size:1.25rem; letter-spacing:0.6px}
+.brand .accent{color:var(--accent)}
+.meta{margin-top:12px}
+.status{padding:6px 8px; border-radius:8px; display:inline-block; font-size:0.85rem}
+.status.offline{background:rgba(255,255,255,0.03); color:var(--muted)}
+.status.online{background:rgba(96,165,250,0.12); color:var(--accent)}
+.user-info{margin-top:8px; color:var(--muted); font-size:0.95rem}
+.instructions{margin-top:14px; color:var(--muted); font-size:0.9rem}
+.footer-note{margin-top:18px; font-size:0.8rem; color:var(--muted)}
+
+/* Chat area */
+.chat{flex:1; display:flex; flex-direction:column; min-height:520px}
+.chat-header{display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-radius:12px 12px 0 0}
+.chat-title{font-weight:700}
+.controls{display:flex; gap:8px}
+.btn{padding:8px 12px; border-radius:10px; border:none; cursor:pointer; font-weight:600}
+.btn.primary{background:var(--accent); color:#07203a}
+.btn.secondary{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted)}
+
+/* messages */
+.messages{list-style:none; margin:0; padding:16px; overflow-y:auto; background:var(--glass); border-radius:0 0 12px 12px; flex:1; display:flex; flex-direction:column; gap:12px}
+.msg{display:flex; gap:10px; align-items:flex-end; max-width:75%}
+.msg.own{margin-left:auto; flex-direction:row-reverse}
+.avatar{width:40px; height:40px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff}
+.bubble{padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.03); color:var(--white); box-shadow: 0 4px 12px rgba(2,6,23,0.3)}
+.msg.own .bubble{background:linear-gradient(90deg,#60a5fa,#3b82f6); color:#07203a}
+.meta-line{font-size:0.78rem; color:var(--muted); margin-top:6px}
+
+/* compose */
+.compose{display:flex; gap:8px; padding:12px; margin-top:12px}
+.compose input{flex:1; padding:12px; border-radius:10px; border:none; outline:none; background:rgba(255,255,255,0.03); color:var(--white)}
+.compose button{min-width:84px}
+
+/* modal */
+.modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(2,6,23,0.5); visibility:hidden; opacity:0; transition:all .16s}
+.modal-card{background:#071827; padding:20px; border-radius:10px; width:320px; text-align:center}
+.modal-card h2{margin:0 0 10px 0}
+.modal-card input{width:100%; padding:10px; border-radius:8px; border:none; margin-top:10px; background:rgba(255,255,255,0.02); color:var(--white)}
+.modal .modal-actions{margin-top:12px}
+.modal.show{visibility:visible; opacity:1}
+
+@media(max-width:840px){
+  .app{flex-direction:column; padding:12px}
+  .sidebar{width:100%}
+  .chat{min-height:60vh}
+}
